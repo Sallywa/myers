@@ -12,29 +12,45 @@
   <BODY>
     <H1>Diff Speed Test</H1>
     <SCRIPT TYPE="text/javascript" LANGUAGE="JavaScript">
-    function launch(){
-      var text1 = document.getElementById('text1').value;
-      var text2 = document.getElementById('text2').value;
-      var dmp = new diff_match_patch();
-      dmp.Diff_Timeout = 0;
-      var ms_start = (new Date()).getTime();
-      var d = dmp.diff_main(text1, text2, false);
-      var ms_end = (new Date()).getTime();
-      var ds = dmp.diff_prettyHtml(d);
+      function launch(){ var text1 = document.getElementById('text1').value; var
+      text2 = document.getElementById('text2').value; var dmp = new
+      diff_match_patch(); dmp.Diff_Timeout = 0; var ms_start = (new
+      Date()).getTime(); var d = dmp.diff_main(text1, text2, false); var ms_end
+      = (new Date()).getTime(); var ds = dmp.diff_prettyHtml(d);
       document.getElementById('outputdiv').innerHTML = ds + '<BR>Time: ' +
-      (ms_end - ms_start) / 1000 + 's'; 
-    }
+      (ms_end - ms_start) / 1000 + 's'; }
     </SCRIPT>
-    <FORM action="#" onsubmit="return false;">
-      <te WIDTH="100%"></div>
-        <h3>Text Version 1:</h3>
-        <textarea id="text1" STYLE="width: 100%" ROWS="10">i am a pretty girl</textarea>
-        <h3>Text Version 2:</h3>
-        <textarea id="text2" STYLE="width: 100%" ROWS="10">i am a cute girl~</textarea>
+    <div class="page">
+      <div class="wrap">
+        <div class="li">
+          <h3>Text Version 1:</h3>
+          <textarea id="text1" STYLE="width: 100%" ROWS="10">
+  i am a pretty girl</textarea
+          >
+        </div>
+        <div class="li">
+          <h3>Text Version 2:</h3>
+          <textarea id="text2" STYLE="width: 100%" ROWS="10">
+  i am a cute girl~</textarea
+          >
+        </div>
       </div>
-      <P><INPUT TYPE="button" onClick="launch()" VALUE="Compute Diff"/></P>
-    </FORM>
-
+    </div>
+    <P><INPUT TYPE="button" onClick="launch()" VALUE="Compute Diff"/></P>
     <div id="outputdiv"></div>
   </BODY>
+  <style>
+    #text1,
+    #text2 {
+      font-size: 14px;
+    }
+    .wrap {
+      display: flex;
+    }
+    .li {
+      display: flex;
+      flex-direction: column;
+      margin: 10px;
+    }
+  </style>
 </HTML>
